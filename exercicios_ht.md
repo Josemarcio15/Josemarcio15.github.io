@@ -1,7 +1,6 @@
 # Lista de Exercícios
 
 ## Exercício 1
-```html
 <ul class="nav flex-column sidebar">
     <li class="nav-item button-nav"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
     <li class="nav-item button-nav"><a class="nav-link" href="#">Iniciante</a></li>
