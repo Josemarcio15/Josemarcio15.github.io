@@ -1,34 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Exercícios</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-        <script src="https://cdn.jsdelivr.net/npm/marked@2.1.3/marked.min.js"></script>
-    </head>
-    <body>
-        <div class="container mt-4">
-            <div id="conteudo"></div>
-        </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Código C++ com Highlight.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
 
-        <script>
-            // Função para carregar o arquivo .md
-            function loadMarkdown() {
-                fetch("exercicios_ht.md")
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Erro ao carregar o arquivo: " + response.statusText);
-                        }
-                        return response.text();
-                    })
-                    .then((markdown) => {
-                        const html = marked(markdown); // Converte Markdown para HTML
-                        document.getElementById("conteudo").innerHTML = html;
-                    })
-                    .catch((error) => console.error("Erro ao carregar o Markdown:", error));
+<h1>Exemplo de Código C++</h1>
+<pre><code class="cpp" id="code-block"></code></pre>
+
+<script>
+    // Carregar o arquivo cpp
+    fetch('codigo.cpp')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao carregar o arquivo: ' + response.status);
             }
-            loadMarkdown();
-        </script>
-    </body>
+            return response.text();
+        })
+        .then(cppCode => {
+            // Coloca o código no bloco de código
+            document.getElementById('code-block').textContent = cppCode;
+
+            // Inicializa o highlight.js
+            hljs.highlightElement(document.getElementById('code-block'));
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            document.getElementById('code-block').textContent = 'Erro ao carregar o código.';
+        });
+</script>
+
+</body>
 </html>
